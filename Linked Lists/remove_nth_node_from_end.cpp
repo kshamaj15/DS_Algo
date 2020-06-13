@@ -45,12 +45,9 @@ int main() {
     five->next = NULL;
 
     removeNthFromEnd(head, 1);
-    while (head != NULL)
-    {
+    while (head != NULL) {
         cout<<head->val<< " ";
         head = head->next;
     }
-    
-
     return 0;
 }
