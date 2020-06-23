@@ -115,6 +115,19 @@ void postOrderItrativeWithStack (Node* root) {
     }
     
 }
+
+int findHeight (Node* root) {
+    if(root == NULL) {
+        return 0;
+    } else {
+         int maxHeight = 0;
+         int a=0, b=0;
+         a = findHeight(root->left);
+         b = findHeight(root->right);
+         maxHeight = a > b ? a+1 : b+1;
+         return maxHeight;
+    }
+}
     
 
 int main() {
@@ -131,8 +144,9 @@ int main() {
 
     // inOrder(root);cout<<endl;
     // preOrder(root);cout<<endl;
-    postOrder(root);cout<<endl;
+    // postOrder(root);cout<<endl;
     // inOrderItrativeWithStack(root);
-    postOrderItrativeWithStack(root);
+    // postOrderItrativeWithStack(root);
+    cout<<findHeight(root);
     return 0;
 }
