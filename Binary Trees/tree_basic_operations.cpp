@@ -128,6 +128,20 @@ int findHeight (Node* root) {
          return maxHeight;
     }
 }
+
+int getMinDepth (Node* A) {
+    if(A == NULL) {
+        return 0;
+    } else {
+        int minDepth, leftDepth, rightDepth;
+        if(A != NULL) {
+            leftDepth  = getMinDepth(A->left);
+            rightDepth = getMinDepth(A->right);
+        }
+        minDepth = leftDepth < rightDepth ? leftDepth : rightDepth;
+        return minDepth+1;
+    }
+}
     
 
 int main() {
@@ -137,16 +151,20 @@ int main() {
     Node* l12 = new Node(3);
     Node* l21 = new Node(4);
     Node* l22 = new Node(5);
+    Node* l23 = new Node(6);
+    Node* l24 = new Node(7);
     root->left = l11;
     root->right = l12;
     l11->left = l21;
     l11->right = l22;
+    l12->left = l23;
+    l12->right = l24;
 
     // inOrder(root);cout<<endl;
     // preOrder(root);cout<<endl;
     // postOrder(root);cout<<endl;
     // inOrderItrativeWithStack(root);
     // postOrderItrativeWithStack(root);
-    cout<<findHeight(root);
+    cout<<getMinDepth(root);
     return 0;
 }
