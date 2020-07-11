@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std; 
-  
 
-  long long int fib2(long long int n) 
+long long int fib2(long long int n) 
 { 
       
     // Declare an array to store  
