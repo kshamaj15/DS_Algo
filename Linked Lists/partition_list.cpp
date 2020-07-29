@@ -9,46 +9,36 @@ class ListNode {
 ListNode* partition(ListNode* A, int B) {
     ListNode* newHead = NULL;
     ListNode* midHead = NULL;
-    ListNode* less = NULL;
-    ListNode* great = NULL;
-    ListNode* curr = A;
-    if(A->next != NULL) {
-        while(curr != NULL) {
-        if(newHead == NULL && curr->val < B) {
-            newHead = curr;
-            less = curr;
-            curr = curr->next;
-            // if(midHead != NULL) {
-            //     less->next = midHead;
-            //     if(great != NULL)
-            //     great->next = NULL;
-            // }
-        } else if(curr->val < B && great ==  NULL) {
-            less->next = curr;
-            less = less->next;
-            curr = curr->next;
-        } else if (curr->val >= B && great ==  NULL) {
-            great = curr;
-            midHead = curr;
-            curr = curr->next;
-        } else if (curr->val >= B && great !=  NULL) {
-            great->next = curr;
-            great = great->next;
-            curr = curr->next;
-        } else if (curr->val < B && great !=  NULL) {
-            ListNode* temp;
-            temp = curr->next;
-            less->next = curr;
-            less = less->next;
-            less->next = midHead;
-            curr = temp;
+    ListNode* curr0 = NULL;
+    ListNode* curr1 = NULL;
+    // if(A->val < B) {
+    //     newHead = A;
+    //     curr0 = A;
+    // }
+    
+    while(A != NULL) {
+        cout<<A->val<<endl;
+        if(A->val < B && curr0 == NULL) {
+            newHead = A;
+            curr0 = A;
+        } else if (A->val < B && curr0 != NULL) {
+            curr0->next = A;
+            curr0 = curr0->next;
+        } else if(A->val >= B && curr1 == NULL) {
+            midHead = A;
+            curr1 = A;
+        } else if (A->val >= B && curr1 != NULL) {
+            curr1->next = A;
+            curr1 = curr1->next;
         }
+        A = A->next;
     }
-    if(newHead == NULL) {
-        newHead = A;
-    }
+    // curr0->next = NULL;
+    // curr1->next = NULL;
+    if(curr0 != NULL) {
+        curr0->next = midHead;
     } else {
-        newHead = A;
+        newHead = midHead;
     }
     return newHead;
 }
@@ -60,15 +50,15 @@ int main() {
     ListNode *four = new ListNode();
     ListNode *five = new ListNode();
 
-    head->next = two;
-    head->val = 9;
+    head->next = NULL;
+    head->val = 1;
     two->next = three;
-    two->val = 4;
+    two->val = 2;
     three->next = four;
-    three->val = 7;
-    four->val = 6;
+    three->val = 3;
+    four->val = 4;
     four->next = five;
-    five->val = 4;
+    five->val = 5;
     five->next = NULL;
 
     ListNode* newHead = partition(head, 5);

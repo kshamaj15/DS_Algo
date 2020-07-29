@@ -15,7 +15,6 @@ ListNode* reverseBetween(ListNode* a, int m, int n) {
         a = a->next;
     }
     last = a;
-    
     //reverse logic
     ListNode* prev = a->next;
     ListNode* curr = a->next->next;
@@ -23,19 +22,25 @@ ListNode* reverseBetween(ListNode* a, int m, int n) {
     ListNode* rhead = prev;
     while(n > m+1) {
         n--;
-        rhead = prev;
         curr->next = prev;
+        rhead = prev;
         prev = curr;
         curr = nxt;
         nxt = curr->next;
     }
-    curr->next= prev;
     last->next = curr;
     rhead->next = nxt;
-    if(m != 1)
-    rhead->next = a->next;
-    else
-    newHead = rhead;
+    cout<<rhead->val<<endl;
+    cout<<nxt->val<<endl;
+    cout<<prev->val<<endl;
+    cout<<curr->val<<endl;
+    curr->next= prev;
+    // if(m != 1)
+    // rhead->next = a->next;
+    if(m == 1) {
+        newHead = rhead;
+    }
+    
     return newHead;
 }
 
@@ -57,7 +62,7 @@ int main() {
     five->val = 5;
     five->next = NULL;
 
-    ListNode* newHead = reverseBetween(head, 2, 4);
+    ListNode* newHead = reverseBetween(head, 1, 4);
     while (newHead != NULL)
     {
         cout<<newHead->val<<" ";
