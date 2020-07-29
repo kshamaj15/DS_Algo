@@ -7,22 +7,40 @@ class ListNode {
 };
 // 3 3 6 8 8
 ListNode* deleteDuplicates(ListNode* a) {
-        ListNode* curr = a;
-        ListNode* pre = a;
-        if (a->next != NULL) {
-            int data = curr->val;
+    ListNode* newHead = NULL;
+    ListNode* prev = a;
+    ListNode* curr;
+    bool isDupli = false;
+    bool isnewNode = false;
+    a = a->next;
+    while(a != NULL) {
+        cout<<a->val<<" "<<prev->val<<endl;
+        if(a->val != prev->val && isnewNode) {
+            if(!isDupli) {
             curr = curr->next;
-            while(curr != NULL) {
-                if(curr->val != data) {
-                    pre->next = curr;
-                    pre = curr;
-                    data = curr->val;
-                } 
-                curr = curr->next;
+            curr = prev;
+            // cout<<curr->val<<" ";
             }
-            pre->next = NULL;
+            isDupli = false;
+            prev = a;
+        } else if(a->val != prev->val && !isnewNode) {
+            if(!isDupli) {
+                newHead = prev;
+            curr = newHead;
+            // cout<<curr->val<<" ";
+            // curr = curr->next;
+            isnewNode = true;
+            }
+            isDupli = false;
+            prev = a;
+        } else if(a->val == prev->val) {
+            isDupli = true;
         }
-        return a;
+        a = a->next;
+    }
+    // cout<<curr->val;
+    cout<<endl;
+    return newHead;
 }
 
 int main() {
@@ -35,18 +53,18 @@ int main() {
     head->next = two;
     head->val = 3;
     two->next = three;
-    two->val = 4;
+    two->val = 5;
     three->next = four;
-    three->val = 4;
-    four->val = 5;
+    three->val = 5;
+    four->val = 6;
     four->next = five;
-    five->val = 5;
+    five->val = 7;
     five->next = NULL;
 
     ListNode* newHead = deleteDuplicates(head);
     while (newHead != NULL)
     {
-        cout<<newHead->val;
+        cout<<newHead->val<<" ";
         newHead = newHead->next;
     }
     

@@ -7,58 +7,36 @@ class ListNode {
 };
 
 ListNode* reverseBetween(ListNode* a, int m, int n) {
-    if(a->next != NULL) {
-        ListNode* curr = a;
-    ListNode* startPrev = NULL;
-    ListNode* endNxt = NULL;
-    ListNode* start;
-    ListNode* end;
-    ListNode* prev;
-    ListNode* nxt;
-
+    ListNode* newHead;
+    ListNode* last;
+    if(m != 1)
+    newHead = a;
     while(m > 2) {
-        curr = curr->next;
-        startPrev = curr;
-        m--;
+        a = a->next;
     }
-    if(m == 2){
-        startPrev = a;
-    }
-    prev = startPrev;
-    if(startPrev != NULL) {
-    curr = curr->next;
-
-    } else {
-        n++;
-    }
-    // nxt = curr->next;
-    while (n-m > 0) {
-        // if(nxt != NULL)
-        nxt = curr->next;
+    last = a;
+    
+    //reverse logic
+    ListNode* prev = a->next;
+    ListNode* curr = a->next->next;
+    ListNode* nxt = curr->next;
+    ListNode* rhead = prev;
+    while(n > m+1) {
+        n--;
+        rhead = prev;
         curr->next = prev;
         prev = curr;
         curr = nxt;
-        n--;
+        nxt = curr->next;
     }
-    if(curr != NULL) {
-endNxt = curr->next;
-    curr->next = prev;
-    }
-    
-    if(startPrev != NULL && startPrev->next != NULL) {
-        startPrev->next->next = endNxt;
-        startPrev->next = curr;
-    } else if(startPrev == NULL)
-    {
-        a = prev;
-        // cout<<prev->val;
-    }
-    
-    }
-    
-    
-    
-    return a;
+    curr->next= prev;
+    last->next = curr;
+    rhead->next = nxt;
+    if(m != 1)
+    rhead->next = a->next;
+    else
+    newHead = rhead;
+    return newHead;
 }
 
 int main() {
@@ -79,10 +57,10 @@ int main() {
     five->val = 5;
     five->next = NULL;
 
-    ListNode* newHead = reverseBetween(head, 1, 5);
+    ListNode* newHead = reverseBetween(head, 2, 4);
     while (newHead != NULL)
     {
-        cout<<newHead->val;
+        cout<<newHead->val<<" ";
         newHead = newHead->next;
     }
     return 0;
