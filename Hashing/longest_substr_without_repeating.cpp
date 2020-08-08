@@ -32,9 +32,27 @@ int lengthOfLongestSubstring(string str) {
     return res;
 }
 
+int myFunction(string str) {
+    unordered_map<char, int> map;
+    int start = 0, end = 0;
+    int fs, se;
+    int mx = 0;
+    for(int i=0; i<str.size(); i++) {
+        if(map[str[i]] >= start) {
+            start = map[str[i]];
+        }
+        map[str[i]] = i+1;
+        end++;
+        mx = max(mx, end-start);
+    }
+    return mx;
+}
+
 
 int main (){
     //code
-    cout<<lengthOfLongestSubstring("dadbc");
+    cout<<lengthOfLongestSubstring("rujdfrhdhh");
+    cout<<endl;
+    cout<<myFunction("rujdfrhdhh");
     return 0;
 }
