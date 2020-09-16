@@ -1,15 +1,12 @@
+// gfg 
+// medium
+// dynamic programming
+// https://practice.geeksforgeeks.org/problems/coin-change/0
+
+
 #include <bits/stdc++.h>
 using namespace std;
-
-class Solution
-{
-  public:
-    long long int count(int S[], int n, int m )
-    {
-        vector<vector<long long int>> dp(n+1, vector<long long int>(m+1, -1));
-       return getWays(S, m, n, dp);
-    }
-    long long int getWays(int S[], int m, int n, vector<vector<long long int>> &dp) {
+long long int getWays(int S[], int m, int n, vector<vector<long long int>> &dp) {
         
         if(m==0)
         return 1;
@@ -28,9 +25,12 @@ class Solution
             return dp[n][m];
         }
     }
-};
-
-
+long long int count(int S[], int n, int m )
+{
+        vector<vector<long long int>> dp(n+1, vector<long long int>(m+1, -1));
+       return getWays(S, m, n, dp);
+    }
+    
 
 int main() {
 	//code
