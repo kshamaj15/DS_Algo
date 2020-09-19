@@ -1,5 +1,3 @@
-// 
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -7,16 +5,15 @@ int main() {
 	    string s;
         cout<<"Please Enter the string"<<endl;
 	    cin>>s;
-	    int n = s.size();
 	    string rs = s;
-	    reverse(rs.begin(), rs.end()); 
-	    vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
+	    reverse(rs.begin(), rs.end());
+	    int n = s.size();
 	    
-	    for(int i=0; i<=n; i++) {
+	    vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
+	    for(int i=0; i<n; i++) {
 	        dp[0][i] = 0;
 	        dp[i][0] = 0;
 	    }
-	    
 	    
 	    for(int i=1; i<=n; i++) {
 	        for(int j=1; j<=n; j++) {
@@ -27,6 +24,8 @@ int main() {
 	            }
 	        }
 	    }
-        cout<<endl;
-	    cout<<dp[n][n]<<endl;
+	    
+	    
+	    cout<<n-dp[n][n]<<endl;
+	return 0;
 }
