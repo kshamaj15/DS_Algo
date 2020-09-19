@@ -1,3 +1,9 @@
+// dynamic programming
+// hackerrank
+// https://www.hackerrank.com/challenges/linkedin-practice-dynamic-programming-lcs/problem
+// hard
+
+
 #include <bits/stdc++.h>
 using namespace std;
 

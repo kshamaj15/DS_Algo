@@ -1,3 +1,8 @@
+// https://practice.geeksforgeeks.org/problems/form-a-palindrome/0
+// dynamic programming
+// gfg
+// medium
+
 #include <bits/stdc++.h>
 using namespace std;
 

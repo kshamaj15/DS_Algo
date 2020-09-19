@@ -1,3 +1,8 @@
+// https://practice.geeksforgeeks.org/problems/shortest-common-supersequence/0
+// dynamic programming
+// gfg
+// easy
+
 #include <bits/stdc++.h>
 using namespace std;
 

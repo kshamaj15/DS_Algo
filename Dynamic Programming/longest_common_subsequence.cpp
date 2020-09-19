@@ -1,3 +1,8 @@
+// https://practice.geeksforgeeks.org/problems/longest-common-subsequence/0
+// dynamic programming
+// gfg
+// medium
+
 #include <bits/stdc++.h>
 using namespace std;
 
