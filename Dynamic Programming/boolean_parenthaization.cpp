@@ -1,3 +1,8 @@
+// https://practice.geeksforgeeks.org/problems/boolean-parenthesization/0
+// https://www.interviewbit.com/problems/evaluate-expression-to-true/
+// on gfg (hard): TLE
+// on Interviewbit: working fine
+
 #include <bits/stdc++.h>
 using namespace std;
 
