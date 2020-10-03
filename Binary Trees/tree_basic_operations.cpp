@@ -38,59 +38,58 @@ void postOrder(Node* root) {
 }
 
 void inOrderItrativeWithStack(Node* root) {
-    // ======= MY CODE =========
-    // stack<Node*> stk;
-    // Node* curr = root;
-    // stk.push(curr);
-    // while (curr->right != NULL || !stk.empty()) {
-    //     while(curr->left != NULL) {
-    //         curr = curr->left;
-    //         stk.push(curr);
-    //     }
-    //     cout<<curr->data;
-    //     if(!stk.empty())
-    //     stk.pop();
-    //     if(!stk.empty()) {
-    //         curr = stk.top();
-    //         cout<<curr->data;
-    //         curr = curr->right;
-    //     }
-        
-    //     if(curr == NULL && !stk.empty())
-    //     curr = stk.top();
-    //     if(curr->right == NULL && stk.empty())
-    //     break;
-    // }
-
     stack<Node *> s; 
     Node *curr = root; 
   
     while (curr != NULL || s.empty() == false) 
     { 
-        /* Reach the left most Node of the 
-           curr Node */
-        while (curr !=  NULL) 
-        { 
-            /* place pointer to a tree node on 
-               the stack before traversing 
-              the node's left subtree */
+        while (curr !=  NULL) { 
             s.push(curr); 
             curr = curr->left; 
         } 
-  
-        /* Current must be NULL at this point */
         curr = s.top(); 
         s.pop(); 
   
         cout << curr->data << " "; 
-  
-        /* we have visited the node and its 
-           left subtree.  Now, it's right 
-           subtree's turn */
         curr = curr->right; 
-  
-    } /* end of while */
+    }
        
+}
+
+vector<int> levelOrder(Node* node)
+{
+  //Your code here
+  queue<Node*> qu;
+  qu.push(node);
+  vector<int> ans;
+  while(!qu.empty()) {
+      Node* curr = qu.front();
+      qu.pop();
+      ans.push_back(curr->data);
+      if(curr->left != NULL)
+      qu.push(curr->left);
+      if(curr->right != NULL)
+      qu.push(curr->right);
+  }
+  return ans;
+}
+
+vector <int> preorder(Node* root)
+{
+  // Your code here
+  vector<int> ans;
+  stack<Node*> s;
+  while(root != NULL || !s.empty()) {
+      while(root != NULL) {
+          ans.push_back(root->data);
+          s.push(root);
+          root = root->left;
+      }
+      root = s.top();
+      root = root->right;
+      s.pop();
+  }
+  return ans;
 }
 
 void postOrderItrativeWithStack (Node* root) {
