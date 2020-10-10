@@ -45,6 +45,24 @@ int search(TrieNode *r, string word) {
     return 0;
 }
 
+bool isEmpty(TrieNode *r) {
+    for(int i=0; i<ALPHABET_SIZE; i++) {
+        if(r->children[i] != NULL)
+        return false;
+    }
+    return true;
+}
+
+void deleteNode(TrieNode *r, string word) {
+    TrieNode *root = r; 
+    for(int i=0; i<word.size(); i++) {
+        int index = word[i] - 'a';
+        if(root->children[i] != NULL) {
+            
+        }
+    }
+}
+
 int main() {
 	int t;
 	cin>>t;
