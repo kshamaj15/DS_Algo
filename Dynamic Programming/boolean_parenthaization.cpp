@@ -1,12 +1,15 @@
 // https://practice.geeksforgeeks.org/problems/boolean-parenthesization/0
 // https://www.interviewbit.com/problems/evaluate-expression-to-true/
-// on gfg (hard): TLE
+// on gfg (hard): TLE-solved when I used array instead of vector
 // on Interviewbit: working fine
 
 #include <bits/stdc++.h>
 using namespace std;
 
-int getCount(string s, int i, int j, vector<vector<int>> &dpT, vector<vector<int>> &dpF, bool isTrue) {
+int dpT[1001][1001];
+int dpF[1001][1001];
+
+int getCount(string s, int i, int j, bool isTrue) {
     if(isTrue && dpT[i][j] != -1)
     return dpT[i][j];
     
@@ -24,19 +27,19 @@ int getCount(string s, int i, int j, vector<vector<int>> &dpT, vector<vector<int
     for(int k=i; k<j-1; k++) {
         
         if(dpT[i][k] == -1)
-        dpT[i][k] = getCount(s, i, k, dpT, dpF, true);
+        dpT[i][k] = getCount(s, i, k, true);
         int lt = (dpT[i][k]);
         
         if(dpF[i][k] == -1)
-        dpF[i][k] = getCount(s, i, k, dpT, dpF, false);
+        dpF[i][k] = getCount(s, i, k, false);
         int lf = (dpF[i][k]);
         
         if(dpT[k+2][j] == -1)
-        dpT[k+2][j] = getCount(s, k+2, j, dpT, dpF, true);
+        dpT[k+2][j] = getCount(s, k+2, j, true);
         int rt = (dpT[k+2][j]);
         
         if(dpF[k+2][j] == -1)
-        dpF[k+2][j] = getCount(s, k+2, j, dpT, dpF, false);
+        dpF[k+2][j] = getCount(s, k+2, j, false);
         int rf = (dpF[k+2][j]);
         
         if(s[k+1] == '|') {
@@ -77,9 +80,9 @@ int main() {
 	    string s;
 	    cin>>n;
 	    cin>>s;
-	    vector<vector<int>> dpT(n+1, vector<int>(n+1, -1));
-	    vector<vector<int>> dpF(n+1, vector<int>(n+1, -1));
-	    cout<<(getCount(s, 0, n-1, dpT, dpF, true))%1003<<endl;
+	    memset(dpT, -1, sizeof(dpT));
+	    memset(dpF, -1, sizeof(dpF));
+	    cout<<(getCount(s, 0, n-1, true))%1003<<endl;
 	} 
 	return 0;
 }
