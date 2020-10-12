@@ -1,6 +1,7 @@
 // https://www.interviewbit.com/problems/maximum-sum-square-submatrix/
 // time: O(n*n) or O(N) where N = number of element in a matrix
 // extra space = O(1)
+// ------- SLIDING WINDOW ALGO ----------- //
 
 #include<bits/stdc++.h>
 using namespace std;
