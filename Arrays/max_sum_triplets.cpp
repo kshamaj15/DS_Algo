@@ -1,6 +1,6 @@
 
 // https://www.interviewbit.com/problems/maximum-sum-triplet/
-// time - O(n^2)
+// time - O(n^2) --- getting TLE (need to optimize more)
 // extra space - O(1)
 
 #include<bits/stdc++.h>
