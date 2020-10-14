@@ -1,17 +1,20 @@
+// https://www.interviewbit.com/problems/leaders-in-an-array/
+// space: O(1)
+// time: O(n)
+
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> solve(vector<int> &A) {
+vector<int> solve(vector<int> &arr) {
     vector<int> ans;
-    stack<int> stk;
-    stk.push(A[A.size()-1]);
-    for(int i=A.size()-2; i>=0; i--) {
-        if(A[i] > stk.top())
-        stk.push(A[i]);
-    }
-    while(!stk.empty()) {
-        ans.push_back(stk.top());
-        stk.pop();
+    int mx=0;
+    for(int i=arr.size()-1; i>=0; i--)
+    {
+        if(arr[i] > mx)
+        {
+            mx = arr[i];
+            ans.push_back(mx);
+        }
     }
     return ans;
 }
