@@ -1,28 +1,38 @@
+// https://practice.geeksforgeeks.org/problems/next-larger-element/0#
+// https://www.youtube.com/watch?v=sDKpIO2HGq0&list=PLEJXowNB4kPzEvxN8ed6T13Meet7HP3h0
+
 #include<bits/stdc++.h>
 using namespace std;
+
+vector<int> nge(vector<int>& v, int n) {
+    stack<int> s;
+    vector<int> ans(n);
+	for(int i=0; i<n; i++) {
+	    if(s.empty() || v[i] <= v[s.top()])
+	    s.push(i);
+	    else {
+	        while(!s.empty() && v[i] > v[s.top()]) {
+	            int index = s.top();
+	            ans[index] = v[i];
+	            s.pop();
+	        }
+	        s.push(i);
+	    }
+	}
+	while(!s.empty()) {
+	    int index = s.top();
+	    ans[index] = -1;
+	    s.pop();
+	}
+    return ans;
+}
+
 int main() {
     int n = 10;
-    int arr[10] = {0,0,0,0,0,0,0,0,70,0};
-    stack<int> stk;
-    vector<int> nge(n, -1);
-    stk.push(0);
-    for (int i = 1; i < n; i++) {
-        if(arr[stk.top()] >= arr[i]) {
-            stk.push(i);
-        } else {
-            while(arr[stk.top()] < arr[i]) {
-                nge[stk.top()] = arr[i];
-                stk.pop();
-                if(stk.empty())
-                break;
-            }
-            stk.push(i);
-        }
-    }
-
-    for (int i = 0; i < n; i++) {;
-        cout<<nge[i]<<" ";
-    }
-    
-    return 0;
+    vector<int> v{3,4,5,6,7,2,4,0, 8,3};
+    vector<int> ans = nge(v, n);
+    for(auto el: ans) {
+	    cout<<el<<" ";
+	}
+    cout<<endl;
 }

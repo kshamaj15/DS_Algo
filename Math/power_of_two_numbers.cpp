@@ -29,5 +29,5 @@ int isPower(int A)
 int main() {
     int n;
     cin>>n;
-    cout<<isPower(n);
+    cout<<isPower(n)<<endl;
 }
