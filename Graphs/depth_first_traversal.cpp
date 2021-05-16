@@ -1,13 +1,6 @@
-// https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
+// https://practice.geeksforgeeks.org/problems/dfs-traversal-of-graph/1
 // easy
 // DFS
-
-#include<bits/stdc++.h>
-using namespace std; 
-
-// https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
-// easy
-// BFS
 
 #include<bits/stdc++.h>
 using namespace std; 
