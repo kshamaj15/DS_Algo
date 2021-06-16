@@ -1,5 +1,5 @@
 // https://practice.geeksforgeeks.org/problems/bipartite-graph/1#
-// easy
+// medium
 // BFS
 
 #include<bits/stdc++.h>
