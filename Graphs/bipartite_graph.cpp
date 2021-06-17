@@ -5,13 +5,13 @@
 #include<bits/stdc++.h>
 using namespace std; 
 
-bool dfs(int color, int node, vector<int>adj[], vector<int>& ver) {
-        ver[node] = color;
+bool dfs(int colour, int node, vector<int>adj[], vector<int>& color) {
+        color[node] = colour;
         for(auto el: adj[node]) {
-            cout<<el<<" "<<ver[el]<<" "<<color<<endl;
-            if(ver[el] == -1) {
-                return dfs(!color, el, adj, ver);
-            } else if(ver[el] == color) {
+            if(color[el] == -1) {
+                if (dfs(!colour, el, adj, color) == false)
+                return false;
+            } else if(color[el] == colour) {
                 return false;
             }
         }
@@ -19,8 +19,8 @@ bool dfs(int color, int node, vector<int>adj[], vector<int>& ver) {
 }
 
 bool isBipartite(int V, vector<int>adj[]){
-	    vector<int> ver(V, -1);
-	    bool ans = dfs(0, 0, adj, ver);
+	    vector<int> color(V, -1);
+	    bool ans = dfs(0, 0, adj, color);
         return ans;
 }
 
