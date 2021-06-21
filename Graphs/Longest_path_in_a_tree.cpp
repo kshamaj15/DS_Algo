@@ -1,4 +1,5 @@
 // https://www.spoj.com/problems/PT07Z/
+// DFS
 
 #include <bits/stdc++.h>
 using namespace std;
