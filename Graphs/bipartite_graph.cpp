@@ -2,6 +2,14 @@
 // medium
 // BFS
 
+// 6 5
+// 0 3
+// 0 4
+// 0 5
+// 1 3
+// 4 5
+
+
 #include<bits/stdc++.h>
 using namespace std; 
 
