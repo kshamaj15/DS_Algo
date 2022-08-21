@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-vector<int> plusOne(vector<int> &a) {
+vector<int> plusOne(vector<int> &a) { 
     vector<int> b;
     int carry = 0;
     for(int i = a.size()-1; i>=0; i--) {
