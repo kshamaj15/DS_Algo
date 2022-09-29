@@ -17,7 +17,7 @@ int main() {
 	    vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
 	    for(int i=0; i<n; i++) {
 	        dp[0][i] = 0;
-	        dp[i][0] = 0;
+	        dp[i][0] = 0; 
 	    }
 	    
 	    for(int i=1; i<=n; i++) {
